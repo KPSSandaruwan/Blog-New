@@ -17,15 +17,25 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;//Added undefined to handle the error
+
+  loginForm: FormGroup;
   username = '';
   password = '';
   matcher = new MyErrorStateMatcher();
   isLoadingResults = false;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) {
+    this.loginForm = this.formBuilder.group({
+      'username' : [null, Validators.required],
+      'password' : [null, Validators.required]
+    });
+  }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    // this.loginForm = this.formBuilder.group({
+    //   'username' : [null, Validators.required],
+    //   'password' : [null, Validators.required]
+    // });
   }
 
   onFormSubmit(form: NgForm) {

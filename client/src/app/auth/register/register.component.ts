@@ -19,21 +19,27 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class RegisterComponent implements OnInit {
 
-  registerForm: FormGroup; //Added undefined
+  registerForm: FormGroup;
   fullName = '';
   username = '';
   password = '';
   isLoadingResults = false;
   matcher = new MyErrorStateMatcher();
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) { }
-
-  ngOnInit() {
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) {
     this.registerForm = this.formBuilder.group({
       fullName: [null, Validators.required],
       username : [null, Validators.required],
       password : [null, Validators.required]
     });
+  }
+
+  ngOnInit() {
+    // this.registerForm = this.formBuilder.group({
+    //   fullName: [null, Validators.required],
+    //   username : [null, Validators.required],
+    //   password : [null, Validators.required]
+    // });
   }
 
   onFormSubmit(form: NgForm) {
