@@ -1,8 +1,16 @@
-export class Category {
-  id: number | undefined;
-  catName: string | undefined;
-  catDesc: string | undefined;
-  catImgUrl: string | undefined;
-  catContent: string | undefined;
-  updated: Date | undefined;
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-category',
+  templateUrl: './category.component.html',
+  styleUrls: ['./category.component.scss']
+})
+export class CategoryComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
 }
