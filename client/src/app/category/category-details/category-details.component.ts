@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CategoryService } from './../../category.service';
+import { Category } from '../category'
 
 @Component({
   selector: 'app-category-details',
@@ -7,9 +10,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryDetailsComponent implements OnInit {
 
-  constructor() { }
+  category: Category = {
+    id: null,
+    catName: '',
+    catDesc: '',
+    catImgUrl: '',
+    catContent: '',
+    updated: null
+  }
+  isLoadingResults = true;
+  constructor(private route: ActivatedRoute, private api: CategoryService, private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getCategoryDetails(this.route.snapshot.params.id);
   }
 
+  getCategoryDetails(id: any) {
+    this.api.getCategory(id)
+      .subscribe((data: any) => {
+        this.category = data;
+        console.log(this.category);
+        this.isLoadingResults = false;
+      });
+  }
+
+  deleteCategory(id: any) {
+    this.isLoadingResults = true;
+    this.api.deleteCategory(id)
+      .subscribe(res => {
+          this.isLoadingResults = false;
+          this.router.navigate(['/category']);
+        }, (err) => {
+          console.log(err);
+          this.isLoadingResults = false;
+        }
+      );
+  }
 }

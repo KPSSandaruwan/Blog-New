@@ -31,6 +31,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { MatContenteditableModule } from 'mat-contenteditable';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatCardModule,
     MatFormFieldModule,
     MatMenuModule,
-    MatToolbarModule
+    MatToolbarModule,
+    CKEditorModule,
+    MatContenteditableModule
   ],
   providers: [
     {

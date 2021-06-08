@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { Category } from './category/category.component';//Change the code
-import { Post } from './post/post.component';//Change the code
+import { Category } from './category/category';
+import { Post } from './post/post';
 
 const apiUrl = 'http://localhost:3000/api/public/';
 
